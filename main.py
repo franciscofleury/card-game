@@ -1,0 +1,41 @@
+from classes import Player, Card, User
+from game import GameManager
+def main():
+    mylon = Player("mylon","pain", "top")
+    minerva = Player("minerva","rensga", "jungle")
+    brucer = Player("brucer","team one", "mid")
+    esa = Player("esa","keyd", "adc")
+    baiano = Player("baiano","cnb", "sup")
+    fnb = Player("fnb","red", "top")
+    aegis = Player("aegis","red", "jungle")
+    envy = Player("envy","red", "mid")
+    titan = Player("titan","red", "adc")
+    frosty = Player("frosty","red", "sup")
+
+    mylon = Card(78,["gnar", "sion"], "top",mylon)
+    minerva = Card(65,["elise", "jarvan"], "jungle",minerva)
+    brucer = Card(86,["zoe", "ahri"], "mid",brucer)
+    esa = Card(87,["caitlyn", "sivir"], "adc",esa)
+    baiano = Card(97,["morgana", "rakan"], "sup",baiano)
+    fnb = Card(67,["camille", "sett"], "top",fnb)
+    aegis = Card(93,["viego", "kayn"], "top",aegis)
+    envy = Card(65,["leblanc", "zed"], "top",envy)
+    titan = Card(97,["kaisa", "xayah"], "top",titan)
+    frosty = Card(64,["lulu", "yummi"], "top",frosty)
+
+    blue = User("fleury",[mylon, minerva, brucer, esa, baiano])
+    red = User("newtonfo", [fnb, aegis, envy, titan, frosty])
+
+    game = GameManager(blue, red)
+    print(game.blue.name)
+    print(game.red.name)
+    print(game.blue.inventory[0])
+    print(game.red.inventory[0])
+    game.setSummoners([(mylon, "gnar"), (minerva, "elise"), (brucer, "ahri"), (esa, "sivir"), (baiano, "morgana")], [(fnb, "sett"), (aegis, "viego"), (envy, "zed"), (titan, "kaisa"), (frosty, "yummi")])
+    print(game.blueSide[0].card.player.name)
+    print(game.blueSide[0].forca)
+    print(game.blueSide[0].modificadores)
+    game.start_game()
+    print(game.possibleActions["rota"][0])
+if __name__ == '__main__':
+    main()
